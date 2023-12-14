@@ -1,6 +1,7 @@
 import { ClerkProvider } from "@clerk/nextjs"
 import { Toaster } from "react-hot-toast"
 import NextTopLoader from "nextjs-toploader"
+import { ModalProvider } from "@/components/providers/modal-provider"
 
 const PlatformLayout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -10,6 +11,7 @@ const PlatformLayout = ({ children }: { children: React.ReactNode }) => {
         color="#27ae60"
         easing="cubic-bezier(0.53,0.21,0.1)"
       />
+      <ModalProvider />
       <Toaster />
       <div className="bg-white h-full">{children}</div>
     </ClerkProvider>
