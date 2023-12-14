@@ -10,6 +10,7 @@ const PlatformLayout = ({ children }: { children: React.ReactNode }) => {
         height={4}
         color="#27ae60"
         easing="cubic-bezier(0.53,0.21,0.1)"
+        showSpinner={false}
       />
       <ModalProvider />
       <Toaster />

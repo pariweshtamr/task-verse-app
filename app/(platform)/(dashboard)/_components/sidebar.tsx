@@ -1,7 +1,7 @@
 "use client"
 import { Button } from "@/components/ui/button"
 import { Skeleton } from "@/components/ui/skeleton"
-import { useClerk, useUser } from "@clerk/nextjs"
+import { UserButton, useClerk, useUser } from "@clerk/nextjs"
 import { Activity, CheckCheck, List, ListTodo, LogOut } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -52,6 +52,9 @@ export const Sidebar = () => {
             width={70}
             height={70}
           />
+        </div>
+        <div className="user-btn absolute z-20 top-0 w-full h-full">
+          <UserButton />
         </div>
 
         {/* <Avatar>
