@@ -16,6 +16,9 @@ const IncompleteTasksPage = async () => {
       userId,
       isCompleted: false,
     },
+    orderBy: {
+      createdAt: "desc",
+    },
   })
   return (
     <>

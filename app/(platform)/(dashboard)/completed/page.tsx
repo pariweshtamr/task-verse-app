@@ -16,6 +16,9 @@ const CompletedPage = async () => {
       userId,
       isCompleted: true,
     },
+    orderBy: {
+      createdAt: "desc",
+    },
   })
   return (
     <>

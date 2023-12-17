@@ -15,6 +15,9 @@ const AllTasksPage = async () => {
     where: {
       userId,
     },
+    orderBy: {
+      createdAt: "desc",
+    },
   })
   return (
     <>

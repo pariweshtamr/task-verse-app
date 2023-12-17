@@ -16,6 +16,9 @@ const ImportantTasksPage = async () => {
       userId,
       isImportant: true,
     },
+    orderBy: {
+      createdAt: "desc",
+    },
   })
   return (
     <div>

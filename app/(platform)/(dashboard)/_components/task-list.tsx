@@ -10,7 +10,7 @@ type TaskListProps = {
   importantTasks?: Task[]
 }
 
-export const TaskList = async ({
+export const TaskList = ({
   allTasks,
   completedTasks,
   incompletTasks,

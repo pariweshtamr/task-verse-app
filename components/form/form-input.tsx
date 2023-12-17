@@ -18,6 +18,8 @@ type FormInputProps = {
   className?: string
   defaultValue?: string
   onBlur?: () => void
+  modal?: boolean
+  checkbox?: boolean
 }
 export const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
   (
@@ -32,17 +34,22 @@ export const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
       className,
       defaultValue,
       onBlur,
+      modal,
+      checkbox,
     },
     ref
   ) => {
     const { pending } = useFormStatus()
     return (
       <div className="space-y-2">
-        <div className="space-y-1 flex items-center gap-2">
+        <div className={`${!modal && "flex items-center gap-2"} space-y-1`}>
           {label ? (
             <Label
               htmlFor={id}
-              className="text-xs font-semibold text-neutral-700"
+              className={cn(
+                "text-xs font-semibold text-neutral-700",
+                (modal || checkbox) && "text-[16px]"
+              )}
             >
               {label}
             </Label>

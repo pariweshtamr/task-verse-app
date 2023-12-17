@@ -14,8 +14,6 @@ const handler = async (data: InputType): Promise<ReturnType> => {
     }
   }
 
-  console.log(data)
-
   const { id, isCompleted } = data
   let task
 
