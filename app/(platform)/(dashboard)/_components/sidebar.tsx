@@ -42,13 +42,13 @@ export const Sidebar = () => {
   return (
     <div className="w-72 relative bg-muted border-2 rounded-lg shadow-md flex flex-col justify-between">
       <div className="mt-6 mx-2 py-2 relative rounded-xl cursor-pointer font-medium text-dark flex flex-col items-center group">
-        <div className="absolute left-0 top-0 w-full h-full backdrop-blur-[10px] z-0 transition rounded-lg opacity-10 group-hover:border-2 group-hover:border-gray-500 group-hover:opacity-10 " />
+        <div className="absolute left-0 top-0 w-full h-full backdrop-blur-[10px] z-0 transition rounded-lg opacity-10 group-hover:border-b-2 group-hover:border-gray-500 group-hover:opacity-10 " />
 
         <div className="rounded-full relative z-[1] flex-shrink-0 inline-block overflow-hidden transition w-[70px] h-70px]">
           <Image
-            src={"/avatar.jpg"}
+            src={user?.imageUrl ?? "/avatar.jpg"}
             alt="avatar"
-            className="rounded-full transition group-hover:scale-110"
+            className="rounded-full"
             width={70}
             height={70}
           />

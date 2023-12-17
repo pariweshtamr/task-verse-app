@@ -22,6 +22,8 @@ const buttonVariants = cva(
           "bg-[#3282B8] text-primary-foreground hover:bg-[#3282B8]/90 transition-all hover:transition-all",
         transparent: "bg-transparent text-white hover:bg-white/20",
         gray: "bg-neutral-200 text-secondary-foreground hover:bg-neutral-300",
+        complete:
+          "bg-[#32b851] text-primary-foreground hover:bg-[#32b851]/90 transition-all hover:transition-all",
       },
       size: {
         default: "h-10 px-4 py-2",
