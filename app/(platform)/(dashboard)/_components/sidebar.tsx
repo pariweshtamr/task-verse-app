@@ -1,11 +1,20 @@
 "use client"
 import { Button } from "@/components/ui/button"
 import { Skeleton } from "@/components/ui/skeleton"
+import { cn } from "@/lib/utils"
 import { UserButton, useClerk, useUser } from "@clerk/nextjs"
-import { Activity, CheckCheck, List, ListTodo, LogOut } from "lucide-react"
+import {
+  Activity,
+  CheckCheck,
+  List,
+  ListTodo,
+  LogOut,
+  Menu,
+} from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
+import { useLocalStorage } from "usehooks-ts"
 
 const menu = [
   {
@@ -33,14 +42,23 @@ const menu = [
     link: "/incomplete",
   },
 ]
-export const Sidebar = () => {
+
+type SidebarProps = {
+  className?: string
+}
+export const Sidebar = ({ className }: SidebarProps) => {
   const pathname = usePathname()
   const router = useRouter()
   const { user } = useUser()
   const { signOut } = useClerk()
 
   return (
-    <div className="w-72 relative bg-muted border-2 rounded-lg shadow-md flex flex-col justify-between">
+    <div
+      className={cn(
+        "flex relative w-72 bg-muted border-2 rounded-lg shadow-md flex-col justify-between h-full",
+        className
+      )}
+    >
       <div className="mt-6 mx-2 py-2 relative rounded-xl cursor-pointer font-medium text-dark flex flex-col items-center group">
         <div className="absolute left-0 top-0 w-full h-full backdrop-blur-[10px] z-0 transition rounded-lg opacity-10 group-hover:border-b-2 group-hover:border-gray-500 group-hover:opacity-10 " />
 
@@ -53,7 +71,7 @@ export const Sidebar = () => {
             height={70}
           />
         </div>
-        <div className="user-btn absolute z-20 top-0 w-full h-full">
+        <div className="user-btn absolute z-20 top-0 w-full h-full md:block hidden">
           <UserButton />
         </div>
 
@@ -65,7 +83,9 @@ export const Sidebar = () => {
         {!user?.fullName ? (
           <Skeleton className="mt-1 bg-neutral-200 w-[90%] h-7" />
         ) : (
-          <h1 className="mt-1 text-lg relative z-[1]">{user?.fullName}</h1>
+          <h1 className="mt-1 text-lg relative z-[1] text-darkest">
+            {user?.fullName}
+          </h1>
         )}
       </div>
 
@@ -73,14 +93,14 @@ export const Sidebar = () => {
         {menu.map((item) => (
           <li
             key={item.id}
-            className={`items-center py-3 px-4 grid grid-cols-[40px_1fr] cursor-pointer relative after:absolute after:left-0 after:top-0 after:w-0 after:h-full after:z-[1] after:bg-lightblue after:transition-all before:absolute before:right-0 before:top-0 before:w-0 before:h-full before:bg-[#3282b8] before:rounded-bl-lg before:rounded-tl-lg before:z-10 hover:after:w-full hover:after:transition-all ${
+            className={`items-center py-3 px-4 grid grid-cols-[40px_1fr] cursor-pointer relative after:absolute after:left-0 after:top-0 after:w-0 after:h-full after:z-[1] after:bg-bg after:transition-all before:absolute before:right-0 before:top-0 before:w-0 before:h-full before:bg-dark before:rounded-bl-lg before:rounded-tl-lg before:z-10 hover:after:w-full hover:after:transition-all ${
               pathname === item.link && "bg-white before:w-[0.35rem]"
             }`}
           >
             <div
               className={`${
-                pathname === item.link && "text-[#0F4C75]"
-              } flex items-center text-[#3282B8] z-10`}
+                pathname === item.link && "text-darkest"
+              } flex items-center text-txtDark z-10`}
             >
               {item.icon}
             </div>

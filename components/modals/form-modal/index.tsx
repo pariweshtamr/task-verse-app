@@ -5,6 +5,7 @@ import { FormTextarea } from "@/components/form/form-textarea"
 import { Dialog, DialogContent } from "@/components/ui/dialog"
 import { useFormModal } from "@/hooks/use-card-modal"
 import { useAction } from "@/hooks/useAction"
+import { Plus } from "lucide-react"
 import toast from "react-hot-toast"
 
 export const FormModal = () => {
@@ -110,8 +111,12 @@ export const FormModal = () => {
             </div>
           </div>
 
-          <FormSubmitButton className="w-full" variant="primary">
-            Create
+          <FormSubmitButton
+            className="flex items-center gap-2 float-right py-5 px-4"
+            variant="primary"
+          >
+            <Plus className="w-5 h-5" />
+            Create Task
           </FormSubmitButton>
         </form>
       </DialogContent>

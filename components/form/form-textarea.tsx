@@ -60,6 +60,7 @@ export const FormTextarea = forwardRef<HTMLTextAreaElement, FormTextareaProps>(
             name={id}
             id={id}
             disabled={pending || disabled}
+            rows={modal ? 5 : 0}
             ref={ref}
             className={
               (cn(
