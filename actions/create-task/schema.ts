@@ -17,5 +17,7 @@ export const CreateTask = z.object({
   ),
   date: z.string(),
   isImportant: z.optional(z.boolean()),
+  isCompleted: z.optional(z.boolean()),
+
   // userId: z.string(),
 })

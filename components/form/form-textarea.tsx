@@ -18,6 +18,7 @@ type FormTextareaProps = {
   onBlur?: () => void
   onClick?: () => void
   defaultValue?: string
+  modal?: boolean
 }
 export const FormTextarea = forwardRef<HTMLTextAreaElement, FormTextareaProps>(
   (
@@ -32,6 +33,7 @@ export const FormTextarea = forwardRef<HTMLTextAreaElement, FormTextareaProps>(
       onBlur,
       onClick,
       defaultValue,
+      modal,
     },
     ref
   ) => {
@@ -42,7 +44,10 @@ export const FormTextarea = forwardRef<HTMLTextAreaElement, FormTextareaProps>(
           {label ? (
             <Label
               htmlFor="id"
-              className="text-xs font-semibold text-neutral-700"
+              className={cn(
+                "text-xs font-semibold text-txtColor",
+                modal && "text-md"
+              )}
             >
               {label}
             </Label>
@@ -55,10 +60,11 @@ export const FormTextarea = forwardRef<HTMLTextAreaElement, FormTextareaProps>(
             name={id}
             id={id}
             disabled={pending || disabled}
+            rows={modal ? 5 : 0}
             ref={ref}
             className={
               (cn(
-                "resize-none focus-visible:ring-0 focus-visible:ring-offset-0 ring-0 focus:ring-0 outline-none shadow-sm"
+                "resize-none focus-visible:ring-0 focus-visible:ring-offset-0 ring-0 focus:ring-0 outline-none shadow-sm text-txtColor"
               ),
               className)
             }

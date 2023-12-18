@@ -43,6 +43,26 @@ body,
     --ring: 0 0% 3.9%;
 
     --radius: 0.5rem;
+
+    --txtColor: 0 0 0;
+    --bg-main: 240 243 250;
+    --bg: 245 245 245;
+    --card: 255 255 255;
+    --link-bg: 255 255 255;
+    --green: 111 160 107;
+    --borders: 240 243 250;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --txtColor: 255 255 225;
+      --bg-main: 25 24 28;
+      --bg: 34 33 34;
+      --card: 51 50 51;
+      --link-bg: 49 48 49;
+      --green: 111 160 107;
+      --borders: 49 48 49;
+    }
   }
 
   .dark {
@@ -101,4 +121,13 @@ body,
   width: 100%;
   height: 100%;
   opacity: 0;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+input[type="checkbox"] {
+  cursor: pointer;
 }

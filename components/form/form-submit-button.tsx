@@ -16,6 +16,7 @@ type FormSubmitButtonProps = {
     | "primary"
     | "ghost"
     | "link"
+    | "complete"
 }
 export const FormSubmitButton = ({
   children,

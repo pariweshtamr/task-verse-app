@@ -1,6 +1,7 @@
 "use client"
 import { Button } from "@/components/ui/button"
 import { Skeleton } from "@/components/ui/skeleton"
+import { cn } from "@/lib/utils"
 import { UserButton, useClerk, useUser } from "@clerk/nextjs"
 import { Activity, CheckCheck, List, ListTodo, LogOut } from "lucide-react"
 import Image from "next/image"
@@ -33,39 +34,45 @@ const menu = [
     link: "/incomplete",
   },
 ]
-export const Sidebar = () => {
+
+type SidebarProps = {
+  className?: string
+}
+export const Sidebar = ({ className }: SidebarProps) => {
   const pathname = usePathname()
   const router = useRouter()
   const { user } = useUser()
   const { signOut } = useClerk()
 
   return (
-    <div className="w-72 relative bg-muted border-2 rounded-lg shadow-md flex flex-col justify-between">
+    <div
+      className={cn(
+        "flex relative w-72 bg-bg border border-borders rounded-xl shadow-md flex-col justify-between h-full",
+        className
+      )}
+    >
       <div className="mt-6 mx-2 py-2 relative rounded-xl cursor-pointer font-medium text-dark flex flex-col items-center group">
-        <div className="absolute left-0 top-0 w-full h-full backdrop-blur-[10px] z-0 transition rounded-lg opacity-10 group-hover:border-2 group-hover:border-gray-500 group-hover:opacity-10 " />
+        <div className="absolute left-0 top-0 w-full h-full backdrop-blur-[10px] z-0 transition rounded-lg opacity-10 group-hover:border-b-2 group-hover:border-gray-500 group-hover:opacity-10 " />
 
         <div className="rounded-full relative z-[1] flex-shrink-0 inline-block overflow-hidden transition w-[70px] h-70px]">
           <Image
-            src={"/avatar.jpg"}
+            src={user?.imageUrl ?? "/avatar.jpg"}
             alt="avatar"
-            className="rounded-full transition group-hover:scale-110"
+            className="rounded-full"
             width={70}
             height={70}
           />
         </div>
-        <div className="user-btn absolute z-20 top-0 w-full h-full">
+        <div className="user-btn absolute z-20 top-0 w-full h-full md:block hidden">
           <UserButton />
         </div>
 
-        {/* <Avatar>
-          <AvatarImage src={"/avatar.jpg"} />
-          <AvatarFallback>Profile</AvatarFallback>
-        </Avatar> */}
-
         {!user?.fullName ? (
-          <Skeleton className="mt-1 bg-neutral-200 w-[90%] h-7" />
+          <Skeleton className="mt-2 bg-neutral-200 w-[90%] h-7" />
         ) : (
-          <h1 className="mt-1 text-lg relative z-[1]">{user?.fullName}</h1>
+          <h1 className="mt-2 text-lg relative z-[1] text-txtColor">
+            {user?.fullName}
+          </h1>
         )}
       </div>
 
@@ -73,22 +80,22 @@ export const Sidebar = () => {
         {menu.map((item) => (
           <li
             key={item.id}
-            className={`items-center py-3 px-4 grid grid-cols-[40px_1fr] cursor-pointer relative after:absolute after:left-0 after:top-0 after:w-0 after:h-full after:z-[1] after:bg-lightblue after:transition-all before:absolute before:right-0 before:top-0 before:w-0 before:h-full before:bg-[#3282b8] before:rounded-bl-lg before:rounded-tl-lg before:z-10 hover:after:w-full hover:after:transition-all ${
-              pathname === item.link && "bg-white before:w-[0.35rem]"
+            className={`items-center py-3 px-4 grid grid-cols-[40px_1fr] cursor-pointer relative after:absolute after:left-0 after:top-0 after:w-0 after:h-full after:z-[1] after:bg-linkBg after:transition-all before:absolute before:right-0 before:top-0 before:w-0 before:h-full before:bg-[#6EA870] before:rounded-bl-lg before:rounded-tl-lg before:z-10 hover:after:w-full hover:after:transition-all ${
+              pathname === item.link && "bg-linkBg before:w-[0.35rem]"
             }`}
           >
             <div
               className={`${
-                pathname === item.link && "text-[#0F4C75]"
-              } flex items-center text-[#3282B8] z-10`}
+                pathname === item.link && "!text-txtColor"
+              } flex items-center text-gray-500 z-10`}
             >
               {item.icon}
             </div>
             <Link
               href={item.link}
               className={`${
-                pathname === item.link && "text-[#3282b8]"
-              } font-[500] z-10`}
+                pathname === item.link && "!text-txtColor"
+              } font-[500] z-10 text-gray-500`}
             >
               {item.title}
             </Link>
@@ -97,11 +104,11 @@ export const Sidebar = () => {
       </ul>
 
       <Button
-        variant={"ghost"}
-        className="flex justify-start gap-4 mb-4 text-lg"
+        variant={"transparent"}
+        className="flex justify-start gap-4 mb-4 text-lg text-gray-500 hover:text-txtColor"
         onClick={() => signOut(() => router.push("/"))}
       >
-        <LogOut className="text-[#0f4c75]" /> Sign Out
+        <LogOut /> Sign Out
       </Button>
     </div>
   )

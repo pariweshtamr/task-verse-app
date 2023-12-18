@@ -17,7 +17,14 @@ module.exports = {
     },
     extend: {
       colors: {
-        lightblue: "#BBE1FA",
+        bg: "rgba(var(--bg))",
+        bgMain: "rgba(var(--bg-main))",
+        txtColor: "rgba(var(--txtColor))",
+        taskCard: "rgba(var(--card))",
+        linkBg: "rgba(var(--link-bg))",
+        green: "rgba(var(--green))",
+        borders: "rgba(var(--borders))",
+
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
