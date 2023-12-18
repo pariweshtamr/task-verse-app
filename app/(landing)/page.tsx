@@ -30,7 +30,7 @@ const LandingPage = () => {
         <h1 className="text-3xl md:text-6xl text-center text-txtColor mb-6">
           TaskVerse helps you keep track of
         </h1>
-        <div className="text-3xl md:text-6xl bg-gradient-to-r from-blue-700 to-pink-600 text-white px-4 p-2 rounded-md pb-4 w-fit">
+        <div className="text-3xl md:text-6xl bg-gradient-to-r from-[#16A34A] to-blue-400 text-white px-4 p-2 rounded-md pb-4 w-fit">
           your tasks.
         </div>
       </div>
@@ -46,7 +46,11 @@ const LandingPage = () => {
         accomplish it all with TeamTrackr
       </div>
 
-      <Button className="mt-6" size={"lg"} variant={"landing"} asChild>
+      <Button
+        className="mt-6 bg-black hover:bg-slate-800 border-borders border transition-all hover:transition-all"
+        size={"lg"}
+        asChild
+      >
         <Link href={"/sign-up"} className="tracking-wider">
           Try TaskVerse for free
         </Link>
