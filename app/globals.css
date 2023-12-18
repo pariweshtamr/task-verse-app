@@ -139,7 +139,7 @@ input[type="checkbox"] {
 }
 
 div[role="dialog"] {
-  @apply bg-bgMain px-0 border-borders;
+  @apply bg-bgMain border-borders;
 }
 
 @media (prefers-color-scheme: dark) {
