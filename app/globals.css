@@ -53,6 +53,11 @@ body,
     --borders: 240 243 250;
   }
 
+  /* div[role="dialog"] {
+    background: rgb(25, 24, 28);
+
+  } */
+
   @media (prefers-color-scheme: dark) {
     :root {
       --txtColor: 255 255 225;
@@ -62,6 +67,7 @@ body,
       --link-bg: 49 48 49;
       --green: 111 160 107;
       --borders: 49 48 49;
+      --background: 300 1.5% 13.1%;
     }
   }
 
@@ -130,4 +136,25 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 input[type="checkbox"] {
   cursor: pointer;
+}
+
+div[role="dialog"] {
+  @apply bg-bgMain px-0 border-borders;
+}
+
+@media (prefers-color-scheme: dark) {
+  div[role="dialog"] {
+    @apply text-white;
+  }
+
+  p.cl-userPreviewSecondaryIdentifier {
+    @apply text-muted-foreground;
+  }
+  span.cl-userButtonPopoverActionButtonText {
+    @apply text-white;
+  }
+
+  svg.cl-userButtonPopoverActionButtonIcon {
+    @apply text-muted-foreground;
+  }
 }

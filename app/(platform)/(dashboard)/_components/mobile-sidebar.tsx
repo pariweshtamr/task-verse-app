@@ -23,11 +23,11 @@ export const MobileSidebar = () => {
         variant="ghost"
         size={"sm"}
       >
-        <Menu className="h-5 w-5" />
+        <Menu className="h-5 w-5 text-txtColor" />
       </Button>
       <Sheet open={isOpen} onOpenChange={onClose}>
         <SheetContent side={"left"} className="pt-10">
-          <Sidebar className="bg-bgWhite shadow-none w-full border-none" />
+          <Sidebar className="bg-bgMain shadow-none w-full border-none" />
         </SheetContent>
       </Sheet>
     </>
