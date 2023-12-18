@@ -1,12 +1,14 @@
+import { Task } from "@prisma/client"
 import { create } from "zustand"
 type FormModalStore = {
+  task?: Task
   isOpen: boolean
-  onOpen: () => void
+  onOpen: (task: Task) => void
   onClose: () => void
 }
 
 export const useFormModal = create<FormModalStore>((set) => ({
   isOpen: false,
-  onOpen: () => set({ isOpen: true }),
+  onOpen: (task: Task) => set({ isOpen: true, task }),
   onClose: () => set({ isOpen: false }),
 }))

@@ -17,6 +17,7 @@ type FormInputProps = {
   disabled?: boolean
   className?: string
   defaultValue?: string
+  defaultChecked?: boolean
   onBlur?: () => void
   modal?: boolean
   checkbox?: boolean
@@ -33,6 +34,7 @@ export const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
       disabled,
       className,
       defaultValue,
+      defaultChecked,
       onBlur,
       modal,
       checkbox,
@@ -57,6 +59,7 @@ export const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
           <Input
             onBlur={onBlur}
             defaultValue={defaultValue}
+            defaultChecked={defaultChecked}
             className={cn(
               "text-xs px-2 py-1 h-7 bg-taskCard border border-borders text-txtColor",
               className
