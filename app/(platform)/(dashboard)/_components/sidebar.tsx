@@ -3,18 +3,10 @@ import { Button } from "@/components/ui/button"
 import { Skeleton } from "@/components/ui/skeleton"
 import { cn } from "@/lib/utils"
 import { UserButton, useClerk, useUser } from "@clerk/nextjs"
-import {
-  Activity,
-  CheckCheck,
-  List,
-  ListTodo,
-  LogOut,
-  Menu,
-} from "lucide-react"
+import { Activity, CheckCheck, List, ListTodo, LogOut } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
-import { useLocalStorage } from "usehooks-ts"
 
 const menu = [
   {
@@ -55,7 +47,7 @@ export const Sidebar = ({ className }: SidebarProps) => {
   return (
     <div
       className={cn(
-        "flex relative w-72 bg-muted border-2 rounded-lg shadow-md flex-col justify-between h-full",
+        "flex relative w-72 bg-bg border border-borders rounded-xl shadow-md flex-col justify-between h-full",
         className
       )}
     >
@@ -75,15 +67,10 @@ export const Sidebar = ({ className }: SidebarProps) => {
           <UserButton />
         </div>
 
-        {/* <Avatar>
-          <AvatarImage src={"/avatar.jpg"} />
-          <AvatarFallback>Profile</AvatarFallback>
-        </Avatar> */}
-
         {!user?.fullName ? (
-          <Skeleton className="mt-1 bg-neutral-200 w-[90%] h-7" />
+          <Skeleton className="mt-2 bg-neutral-200 w-[90%] h-7" />
         ) : (
-          <h1 className="mt-1 text-lg relative z-[1] text-darkest">
+          <h1 className="mt-2 text-lg relative z-[1] text-txtColor">
             {user?.fullName}
           </h1>
         )}
@@ -93,22 +80,22 @@ export const Sidebar = ({ className }: SidebarProps) => {
         {menu.map((item) => (
           <li
             key={item.id}
-            className={`items-center py-3 px-4 grid grid-cols-[40px_1fr] cursor-pointer relative after:absolute after:left-0 after:top-0 after:w-0 after:h-full after:z-[1] after:bg-bg after:transition-all before:absolute before:right-0 before:top-0 before:w-0 before:h-full before:bg-dark before:rounded-bl-lg before:rounded-tl-lg before:z-10 hover:after:w-full hover:after:transition-all ${
-              pathname === item.link && "bg-white before:w-[0.35rem]"
+            className={`items-center py-3 px-4 grid grid-cols-[40px_1fr] cursor-pointer relative after:absolute after:left-0 after:top-0 after:w-0 after:h-full after:z-[1] after:bg-linkBg after:transition-all before:absolute before:right-0 before:top-0 before:w-0 before:h-full before:bg-[#6EA870] before:rounded-bl-lg before:rounded-tl-lg before:z-10 hover:after:w-full hover:after:transition-all ${
+              pathname === item.link && "bg-linkBg before:w-[0.35rem]"
             }`}
           >
             <div
               className={`${
-                pathname === item.link && "text-darkest"
-              } flex items-center text-txtDark z-10`}
+                pathname === item.link && "!text-txtColor"
+              } flex items-center text-gray-500 z-10`}
             >
               {item.icon}
             </div>
             <Link
               href={item.link}
               className={`${
-                pathname === item.link && "text-[#3282b8]"
-              } font-[500] z-10`}
+                pathname === item.link && "!text-txtColor"
+              } font-[500] z-10 text-gray-500`}
             >
               {item.title}
             </Link>
@@ -117,11 +104,11 @@ export const Sidebar = ({ className }: SidebarProps) => {
       </ul>
 
       <Button
-        variant={"ghost"}
-        className="flex justify-start gap-4 mb-4 text-lg"
+        variant={"transparent"}
+        className="flex justify-start gap-4 mb-4 text-lg text-gray-500 hover:text-txtColor"
         onClick={() => signOut(() => router.push("/"))}
       >
-        <LogOut className="text-[#0f4c75]" /> Sign Out
+        <LogOut /> Sign Out
       </Button>
     </div>
   )

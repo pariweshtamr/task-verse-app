@@ -45,7 +45,7 @@ export const FormTextarea = forwardRef<HTMLTextAreaElement, FormTextareaProps>(
             <Label
               htmlFor="id"
               className={cn(
-                "text-xs font-semibold text-neutral-700",
+                "text-xs font-semibold text-txtColor",
                 modal && "text-md"
               )}
             >
@@ -64,7 +64,7 @@ export const FormTextarea = forwardRef<HTMLTextAreaElement, FormTextareaProps>(
             ref={ref}
             className={
               (cn(
-                "resize-none focus-visible:ring-0 focus-visible:ring-offset-0 ring-0 focus:ring-0 outline-none shadow-sm"
+                "resize-none focus-visible:ring-0 focus-visible:ring-offset-0 ring-0 focus:ring-0 outline-none shadow-sm text-txtColor"
               ),
               className)
             }

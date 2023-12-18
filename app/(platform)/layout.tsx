@@ -14,7 +14,7 @@ const PlatformLayout = ({ children }: { children: React.ReactNode }) => {
       />
       <ModalProvider />
       <Toaster />
-      <div className="bg-white h-full">{children}</div>
+      <div className="bg-bgMain h-full">{children}</div>
     </ClerkProvider>
   )
 }

@@ -14,7 +14,7 @@ type TaskItemProps = {
   task: Task
 }
 export const TaskItem = ({ task }: TaskItemProps) => {
-  const { title, description, date, isCompleted, isImportant } = task
+  const { title, description, date, isCompleted } = task
   const [isComplete, setIsComplete] = useState(false)
   const { execute: executeDelete } = useAction(deleteTask, {
     onSuccess: (data) => {
@@ -50,7 +50,7 @@ export const TaskItem = ({ task }: TaskItemProps) => {
     }
   }
   return (
-    <div className="bg-white/80 cursor-pointer p-[1.2rem_1rem] rounded-xl h-[16rem] shadow-md border-2 border-neutral-200 flex flex-col gap-2">
+    <div className="bg-taskCard cursor-pointer p-[1.2rem_1rem] rounded-xl h-[16rem] shadow-md border border-borders flex flex-col gap-2 text-txtColor">
       <h1 className="font-semibold capitalize text-lg">{title}</h1>
       <p>{description}</p>
       <p className="mt-auto text-sm">{formatDate(date)}</p>

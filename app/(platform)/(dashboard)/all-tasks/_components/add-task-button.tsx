@@ -13,7 +13,7 @@ export const AddTaskButton = () => {
         <div
           role="button"
           onClick={() => formModal.onOpen()}
-          className="flex items-center justify-center gap-2 h-[16rem] border-[3px] border-dashed font-semibold rounded-xl hover:bg-white/80 hover:text-neutral-600 hover:transition-all transition-all"
+          className="flex items-center justify-center gap-2 h-[16rem] border-[3px] border-dashed border-neutral-400 font-semibold rounded-xl text-txtColor bg-bgMain hover:bg-taskCard hover:transition-all transition-all"
         >
           <Plus className="w-4 h-4" /> Add New Task
         </div>

@@ -65,8 +65,10 @@ export const FormModal = () => {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent>
-        <h1 className="text-xl font-semibold">Create Task</h1>
+      <DialogContent className="bg-bg text-txtColor">
+        <h1 className="text-xl font-semibold underline underline-offset-8">
+          Create Task
+        </h1>
         <form action={onSubmit} className="space-y-4">
           <div className="space-y-4">
             <FormInput
@@ -89,7 +91,7 @@ export const FormModal = () => {
             <FormTextarea
               id="description"
               label="Description"
-              className="resize-none text-sm"
+              className="resize-none text-sm bg-taskCard border border-borders"
               placeholder="e.g, Complete the video about TypeScript on youtube."
               modal={true}
             />
@@ -113,7 +115,7 @@ export const FormModal = () => {
 
           <FormSubmitButton
             className="flex items-center gap-2 float-right py-5 px-4"
-            variant="primary"
+            variant="complete"
           >
             <Plus className="w-5 h-5" />
             Create Task

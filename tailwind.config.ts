@@ -17,12 +17,13 @@ module.exports = {
     },
     extend: {
       colors: {
-        bgWhite: "rgba(var(bg-white))",
         bg: "rgba(var(--bg))",
-        dark: "rgba(var(--dark))",
-        txtLight: "rgba(var(--txtLight))",
-        txtDark: "rgba(var(--txtDark))",
-        darkest: "rgba(var(--darkest))",
+        bgMain: "rgba(var(--bg-main))",
+        txtColor: "rgba(var(--txtColor))",
+        taskCard: "rgba(var(--card))",
+        linkBg: "rgba(var(--link-bg))",
+        green: "rgba(var(--green))",
+        borders: "rgba(var(--borders))",
 
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

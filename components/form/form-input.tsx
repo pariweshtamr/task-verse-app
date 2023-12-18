@@ -47,7 +47,7 @@ export const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
             <Label
               htmlFor={id}
               className={cn(
-                "text-xs font-semibold text-neutral-700",
+                "text-xs font-semibold text-txtColor",
                 (modal || checkbox) && "text-[16px]"
               )}
             >
@@ -57,7 +57,10 @@ export const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
           <Input
             onBlur={onBlur}
             defaultValue={defaultValue}
-            className={cn("text-xs px-2 py-1 h-7", className)}
+            className={cn(
+              "text-xs px-2 py-1 h-7 bg-taskCard border border-borders text-txtColor",
+              className
+            )}
             ref={ref}
             name={id}
             id={id}

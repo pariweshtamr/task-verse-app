@@ -44,12 +44,25 @@ body,
 
     --radius: 0.5rem;
 
-    --bg-white: 240 243 250;
-    --bg: 213 222 239;
-    --dark: 99 142 203;
-    --txtLight: 177 201 239;
-    --txtDark: 138 174 224;
-    --darkest: 57 88 134;
+    --txtColor: 0 0 0;
+    --bg-main: 240 243 250;
+    --bg: 245 245 245;
+    --card: 255 255 255;
+    --link-bg: 255 255 255;
+    --green: 111 160 107;
+    --borders: 240 243 250;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --txtColor: 255 255 225;
+      --bg-main: 25 24 28;
+      --bg: 34 33 34;
+      --card: 51 50 51;
+      --link-bg: 49 48 49;
+      --green: 111 160 107;
+      --borders: 49 48 49;
+    }
   }
 
   .dark {
@@ -111,7 +124,7 @@ body,
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   cursor: pointer;
 }
 

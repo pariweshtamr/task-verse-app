@@ -56,16 +56,16 @@ export const FormPopOver = ({
       <PopoverTrigger asChild>{children}</PopoverTrigger>
       <PopoverContent
         align={align}
-        className="w-80 pt-3"
+        className="w-80 pt-3 bg-bg border-borders"
         side={side}
         sideOffset={sideOffset}
       >
-        <div className="text-sm font-bold underline underline-offset-2 pb-4 text-neutral-600">
+        <div className="text-sm font-bold underline underline-offset-2 pb-4 text-txtColor">
           Create Task
         </div>
         <PopoverClose asChild ref={closeRef}>
           <Button
-            className="h-auto w-auto p-2 absolute top-2 right-2 text-neutral-600"
+            className="h-auto w-auto p-2 absolute top-2 right-2 text-txtColor"
             variant={"ghost"}
           >
             <X className="h-4 w-4" />
@@ -92,7 +92,7 @@ export const FormPopOver = ({
             />
           </div>
 
-          <FormSubmitButton className="w-full" variant="primary">
+          <FormSubmitButton className="w-full" variant="complete">
             Create
           </FormSubmitButton>
         </form>

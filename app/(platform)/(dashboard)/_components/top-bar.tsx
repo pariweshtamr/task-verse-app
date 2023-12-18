@@ -20,7 +20,7 @@ export const Topbar = () => {
         <Button
           size="sm"
           className="rounded-sm md:block hidden"
-          variant="primary"
+          variant="complete"
         >
           <Plus className="w-4 h-4" />
         </Button>
