@@ -17,12 +17,7 @@ export const MobileSidebar = () => {
   }, [pathname, onClose])
   return (
     <>
-      <Button
-        onClick={onOpen}
-        className="md:hidden"
-        variant="ghost"
-        size={"sm"}
-      >
+      <Button onClick={onOpen} className="md:hidden" variant="menu" size={"sm"}>
         <Menu className="h-5 w-5 text-txtColor" />
       </Button>
       <Sheet open={isOpen} onOpenChange={onClose}>
