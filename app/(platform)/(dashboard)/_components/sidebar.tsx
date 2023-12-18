@@ -51,7 +51,7 @@ export const Sidebar = ({ className }: SidebarProps) => {
         className
       )}
     >
-      <div className="mt-6 mx-2 py-2 relative rounded-xl cursor-pointer font-medium text-dark flex flex-col items-center group">
+      <div className="mt-6 mx-2 py-6 relative rounded-xl cursor-pointer font-medium text-dark flex flex-col items-center group">
         <div className="absolute left-0 top-0 w-full h-full backdrop-blur-[10px] z-0 transition rounded-lg opacity-10 group-hover:border-b-2 group-hover:border-gray-500 group-hover:opacity-10 " />
 
         <div className="rounded-full relative z-[1] flex-shrink-0 inline-block overflow-hidden transition w-[70px] h-70px]">

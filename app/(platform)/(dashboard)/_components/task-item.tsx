@@ -7,9 +7,10 @@ import { useFormModal } from "@/hooks/use-card-modal"
 import { useAction } from "@/hooks/useAction"
 import { formatDate } from "@/lib/format-date"
 import { Task } from "@prisma/client"
-import { FileEdit, Trash } from "lucide-react"
+import { FileEdit, Trash, Star } from "lucide-react"
 import { useState } from "react"
 import toast from "react-hot-toast"
+import { Hint } from "./hint"
 
 type TaskItemProps = {
   task: Task
@@ -52,7 +53,15 @@ export const TaskItem = ({ task }: TaskItemProps) => {
     }
   }
   return (
-    <div className="bg-taskCard cursor-pointer p-[1.2rem_1rem] rounded-xl h-[16rem] shadow-md border border-borders flex flex-col gap-2 text-txtColor">
+    <div className="bg-taskCard cursor-pointer p-[1.2rem_1rem] rounded-xl h-[16rem] shadow-md border border-borders flex flex-col gap-2 text-txtColor relative">
+      {task?.isImportant && (
+        <div className="absolute right-3 top-6">
+          <Hint sideOffset={10} side="top" description="Marked as Important!">
+            <Star className="w-4 h-4" fill="#ffd700" color="#ffd700" />
+          </Hint>
+        </div>
+      )}
+
       <h1 className="font-semibold capitalize text-lg">{title}</h1>
       <p>{description}</p>
       <p className="mt-auto text-sm">{formatDate(date)}</p>
