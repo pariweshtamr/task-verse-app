@@ -83,7 +83,12 @@ export const FormPopOver = ({
               errors={fieldErrors}
             />
             <FormInput id="date" label="Date" type="date" />
-            <FormTextarea id="description" label="Description" />
+            <FormTextarea
+              id="description"
+              label="Description"
+              className="bg-taskCard border-borders"
+              placeholder="e.g, Complete the video about TypeScript on youtube."
+            />
             <FormInput
               id="isImportant"
               label="Important"

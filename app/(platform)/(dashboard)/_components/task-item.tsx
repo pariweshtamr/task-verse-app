@@ -3,6 +3,7 @@ import { deleteTask } from "@/actions/delete-task"
 import { updateTask } from "@/actions/update-task"
 import { FormSubmitButton } from "@/components/form/form-submit-button"
 import { Button } from "@/components/ui/button"
+import { useFormModal } from "@/hooks/use-card-modal"
 import { useAction } from "@/hooks/useAction"
 import { formatDate } from "@/lib/format-date"
 import { Task } from "@prisma/client"
@@ -16,6 +17,7 @@ type TaskItemProps = {
 export const TaskItem = ({ task }: TaskItemProps) => {
   const { title, description, date, isCompleted } = task
   const [isComplete, setIsComplete] = useState(false)
+  const { onOpen } = useFormModal()
   const { execute: executeDelete } = useAction(deleteTask, {
     onSuccess: (data) => {
       toast.success(`Task "${data.title}" deleted!`)
@@ -82,12 +84,9 @@ export const TaskItem = ({ task }: TaskItemProps) => {
         )}
 
         <div className="flex items-center">
-          <form action={""}>
-            <input hidden id="id" name="id" value={task.id} readOnly />
-            <FormSubmitButton className="" variant="ghost">
-              <FileEdit className="w-5 h-5" />
-            </FormSubmitButton>
-          </form>
+          <Button variant="ghost" onClick={() => onOpen(task)}>
+            <FileEdit className="w-5 h-5" />
+          </Button>
 
           <form action={onDelete}>
             <input hidden id="id" name="id" value={task.id} readOnly />

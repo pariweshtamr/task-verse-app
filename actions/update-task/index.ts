@@ -14,7 +14,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
     }
   }
 
-  const { id, isCompleted } = data
+  const { id, isCompleted, title, description, isImportant, date } = data
   let task
 
   try {
@@ -25,6 +25,10 @@ const handler = async (data: InputType): Promise<ReturnType> => {
       },
       data: {
         isCompleted,
+        title,
+        description,
+        isImportant,
+        date,
       },
     })
 
