@@ -14,7 +14,7 @@ export const Navbar = () => {
           <Button
             asChild
             size={"default"}
-            className="border border-borders hover:bg-bg"
+            className="border border-borders bg-black hover:bg-slate-800"
           >
             <Link href={"/sign-up"}> Get TeamTrackr for free</Link>
           </Button>
