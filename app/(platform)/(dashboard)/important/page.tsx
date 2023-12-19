@@ -1,7 +1,6 @@
 import db from "@/lib/db"
 import { auth } from "@clerk/nextjs"
 import { redirect } from "next/navigation"
-import { Topbar } from "../_components/top-bar"
 import { Suspense } from "react"
 import { TaskList } from "../_components/task-list"
 

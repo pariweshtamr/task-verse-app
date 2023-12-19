@@ -68,9 +68,13 @@ export const Sidebar = ({ className }: SidebarProps) => {
       <div className="mt-6 mx-2 py-4 relative rounded-xl cursor-pointer font-medium text-dark flex flex-col items-center group">
         <div className="absolute left-0 top-0 w-full h-full backdrop-blur-[10px] z-0 transition rounded-lg opacity-10 group-hover:border-b-2 group-hover:border-gray-500 group-hover:opacity-10 " />
 
-        <Avatar className="w-14 h-14">
-          <AvatarImage src={user?.imageUrl ?? "/avatar.jpg"} />
-        </Avatar>
+        {user?.imageUrl ? (
+          <Avatar className="w-14 h-14">
+            <AvatarImage src={user?.imageUrl} />
+          </Avatar>
+        ) : (
+          <Skeleton className="w-14 h-14 bg-taskCard rounded-full" />
+        )}
 
         <div className="user-btn absolute z-20 top-0 w-full h-full md:block hidden">
           <UserButton />

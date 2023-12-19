@@ -10,7 +10,8 @@ import { NotificationPopover } from "@/components/notification/notification-popo
 import { Task } from "@prisma/client"
 import { Badge } from "@/components/ui/badge"
 import { usePathname } from "next/navigation"
-import { useState } from "react"
+import { Suspense, useState } from "react"
+import { Skeleton } from "@/components/ui/skeleton"
 
 type TopbarProps = {
   dueTasks?: Task[]
@@ -43,17 +44,39 @@ export const Topbar = ({ dueTasks }: TopbarProps) => {
         </FormPopOver>
 
         <div className="relative" onClick={() => setOpened(true)}>
-          {!opened && (
-            <Badge className="absolute -top-3 -right-3 z-10" variant={"custom"}>
-              {dueTasks?.length}
-            </Badge>
-          )}
-
-          <NotificationPopover align="start" side="left" dueTasks={dueTasks}>
+          {!opened &&
+            dueTasks?.length! > 0 &&
+            (user?.imageUrl ? (
+              <Badge
+                className="absolute -top-3 -right-3 z-10"
+                variant={"custom"}
+              >
+                {dueTasks?.length}
+              </Badge>
+            ) : (
+              <Skeleton className="absolute -top-3 -right-3 z-10 h-6 w-8 border px-2.5 py-0.5 rounded-full focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-taskCard border-transparent" />
+            ))}
+          {dueTasks?.length! > 0 ? (
+            user?.imageUrl ? (
+              <NotificationPopover
+                align="start"
+                side="left"
+                dueTasks={dueTasks}
+              >
+                <Avatar className="cursor-pointer">
+                  <AvatarImage src={user?.imageUrl} />
+                </Avatar>
+              </NotificationPopover>
+            ) : (
+              <Skeleton className="w-10 h-10 bg-taskCard rounded-full" />
+            )
+          ) : user?.imageUrl ? (
             <Avatar className="cursor-pointer">
-              <AvatarImage src={user?.imageUrl ?? "/avatar.jpg"} />
+              <AvatarImage src={user?.imageUrl} />
             </Avatar>
-          </NotificationPopover>
+          ) : (
+            <Skeleton className="w-10 h-10 bg-taskCard rounded-full" />
+          )}
         </div>
       </div>
     </div>

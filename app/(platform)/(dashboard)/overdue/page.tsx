@@ -3,6 +3,7 @@ import { auth } from "@clerk/nextjs"
 import { redirect } from "next/navigation"
 import { Suspense } from "react"
 import { TaskList } from "../_components/task-list"
+import moment from "moment"
 
 const OverduePage = async () => {
   const { userId } = auth()
@@ -13,17 +14,29 @@ const OverduePage = async () => {
   const tasks = await db.task.findMany({
     where: {
       userId,
-      date: {},
+      date: {
+        lt: moment().toISOString(),
+      },
+      isCompleted: false,
     },
     orderBy: {
       createdAt: "desc",
     },
   })
+
   return (
     <div className="mt-4">
-      <Suspense fallback={<TaskList.Skeleton />}>
-        <TaskList overdueTasks={tasks} />
-      </Suspense>
+      {tasks?.length === 0 ? (
+        <>
+          <h3 className="text-txtColor text-xl">
+            Great job! You have overdue tasks.
+          </h3>
+        </>
+      ) : (
+        <Suspense fallback={<TaskList.Skeleton />}>
+          <TaskList overdueTasks={tasks} />
+        </Suspense>
+      )}
     </div>
   )
 }

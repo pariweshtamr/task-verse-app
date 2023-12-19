@@ -1,6 +1,5 @@
 import { Suspense } from "react"
 import { TaskList } from "../_components/task-list"
-import { Topbar } from "../_components/top-bar"
 import db from "@/lib/db"
 import { auth } from "@clerk/nextjs"
 import { redirect } from "next/navigation"

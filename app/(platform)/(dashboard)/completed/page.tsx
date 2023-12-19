@@ -1,4 +1,3 @@
-import { Topbar } from "../_components/top-bar"
 import { Suspense } from "react"
 import { TaskList } from "../_components/task-list"
 import { auth } from "@clerk/nextjs"
