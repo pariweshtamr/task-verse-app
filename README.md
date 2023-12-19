@@ -1,4 +1,4 @@
-# Techinal Assessment: Next.js 14, React, Server Components, Tailwind
+# TaskVerse: Next.js 14, React, Server Components, Tailwind
 
 ![App Screenshot](https://github.com/pariweshtamr/task-verse-app/blob/main/public/1.png?raw=true)
 
