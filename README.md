@@ -34,11 +34,17 @@ npm install
 To run this project, you will need to add the following environment variables to your .env file
 
 `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=`
+
 `CLERK_SECRET_KEY=`
+
 `NEXT_PUBLIC_CLERK_SIGN_IN_URL =/sign-in`
+
 `NEXT_PUBLIC_CLERK_SIGN_UP_URL =`
+
 `NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=`
+
 `NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=`
+
 `DATABASE_URL`
 
 ### Start the app
