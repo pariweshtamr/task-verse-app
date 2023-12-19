@@ -1,11 +1,11 @@
 import db from "@/lib/db"
 import { auth } from "@clerk/nextjs"
 import { redirect } from "next/navigation"
-import { Topbar } from "../_components/top-bar"
 import { TaskList } from "../_components/task-list"
 import { Suspense } from "react"
+import moment from "moment"
 
-const IncompleteTasksPage = async () => {
+const DueSoonPage = async () => {
   const { userId } = auth()
   if (!userId) {
     return redirect("/sign-in")
@@ -14,21 +14,27 @@ const IncompleteTasksPage = async () => {
   const tasks = await db.task.findMany({
     where: {
       userId,
-      isCompleted: false,
+      date: {
+        gte: moment().toISOString(),
+        lte: moment().add(3, "days").toISOString(),
+      },
     },
     orderBy: {
       createdAt: "desc",
     },
   })
   return (
-    <>
-      <Topbar />
-      <div className="mt-4">
+    <div className="mt-4">
+      {tasks?.length === 0 ? (
+        <>
+          <h3 className="text-txtColor text-xl">You have no tasks due soon!</h3>
+        </>
+      ) : (
         <Suspense fallback={<TaskList.Skeleton />}>
-          <TaskList incompletTasks={tasks} />
+          <TaskList dueTasks={tasks} />
         </Suspense>
-      </div>
-    </>
+      )}
+    </div>
   )
 }
-export default IncompleteTasksPage
+export default DueSoonPage

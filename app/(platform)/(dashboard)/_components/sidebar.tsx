@@ -4,7 +4,14 @@ import { Button } from "@/components/ui/button"
 import { Skeleton } from "@/components/ui/skeleton"
 import { cn } from "@/lib/utils"
 import { UserButton, useClerk, useUser } from "@clerk/nextjs"
-import { Activity, CheckCheck, List, ListTodo, LogOut } from "lucide-react"
+import {
+  Activity,
+  CalendarCheck,
+  CalendarX,
+  List,
+  ListTodo,
+  LogOut,
+} from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
@@ -23,16 +30,22 @@ const menu = [
     link: "/important",
   },
   {
-    id: 4,
+    id: 3,
     title: "Completed",
-    icon: <CheckCheck />,
+    icon: <CalendarCheck />,
     link: "/completed",
   },
   {
-    id: 5,
-    title: "In Progress",
+    id: 4,
+    title: "Due Soon",
     icon: <Activity />,
-    link: "/incomplete",
+    link: "/due-soon",
+  },
+  {
+    id: 5,
+    title: "Overdue",
+    icon: <CalendarX />,
+    link: "/overdue",
   },
 ]
 
@@ -64,7 +77,7 @@ export const Sidebar = ({ className }: SidebarProps) => {
         </div>
 
         {!user?.fullName ? (
-          <Skeleton className="mt-2 bg-neutral-200 w-[90%] h-7" />
+          <Skeleton className="mt-2 bg-taskCard w-[90%] h-7" />
         ) : (
           <h1 className="mt-2 text-lg relative z-[1] text-txtColor">
             {user?.fullName}

@@ -21,13 +21,10 @@ const ImportantTasksPage = async () => {
     },
   })
   return (
-    <div>
-      <Topbar />
-      <div className="mt-4">
-        <Suspense fallback={<TaskList.Skeleton />}>
-          <TaskList importantTasks={tasks} />
-        </Suspense>
-      </div>
+    <div className="mt-4">
+      <Suspense fallback={<TaskList.Skeleton />}>
+        <TaskList importantTasks={tasks} />
+      </Suspense>
     </div>
   )
 }

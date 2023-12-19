@@ -1,11 +1,10 @@
-import { Topbar } from "../_components/top-bar"
-import { Suspense } from "react"
-import { TaskList } from "../_components/task-list"
+import db from "@/lib/db"
 import { auth } from "@clerk/nextjs"
 import { redirect } from "next/navigation"
-import db from "@/lib/db"
+import { Suspense } from "react"
+import { TaskList } from "../_components/task-list"
 
-const CompletedPage = async () => {
+const OverduePage = async () => {
   const { userId } = auth()
   if (!userId) {
     return redirect("/sign-in")
@@ -14,7 +13,7 @@ const CompletedPage = async () => {
   const tasks = await db.task.findMany({
     where: {
       userId,
-      isCompleted: true,
+      date: {},
     },
     orderBy: {
       createdAt: "desc",
@@ -23,9 +22,9 @@ const CompletedPage = async () => {
   return (
     <div className="mt-4">
       <Suspense fallback={<TaskList.Skeleton />}>
-        <TaskList completedTasks={tasks} />
+        <TaskList overdueTasks={tasks} />
       </Suspense>
     </div>
   )
 }
-export default CompletedPage
+export default OverduePage

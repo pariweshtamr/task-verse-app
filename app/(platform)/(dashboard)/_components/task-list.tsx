@@ -6,15 +6,17 @@ import { Skeleton } from "@/components/ui/skeleton"
 type TaskListProps = {
   allTasks?: Task[]
   completedTasks?: Task[]
-  incompletTasks?: Task[]
+  dueTasks?: Task[]
   importantTasks?: Task[]
+  overdueTasks?: Task[]
 }
 
 export const TaskList = ({
   allTasks,
   completedTasks,
-  incompletTasks,
+  dueTasks,
   importantTasks,
+  overdueTasks,
 }: TaskListProps) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -27,11 +29,15 @@ export const TaskList = ({
         <TaskItem key={task.id} task={task} />
       ))}
 
-      {incompletTasks?.map((task: Task) => (
+      {dueTasks?.map((task: Task) => (
         <TaskItem key={task.id} task={task} />
       ))}
 
       {importantTasks?.map((task: Task) => (
+        <TaskItem key={task.id} task={task} />
+      ))}
+
+      {overdueTasks?.map((task: Task) => (
         <TaskItem key={task.id} task={task} />
       ))}
     </div>
@@ -41,11 +47,11 @@ export const TaskList = ({
 TaskList.Skeleton = function TaskListSkeleton() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <Skeleton className="h-[16rem] w-full bg-neutral-200" />
-      <Skeleton className="h-[16rem] w-full bg-neutral-200" />
-      <Skeleton className="h-[16rem] w-full bg-neutral-200" />
-      <Skeleton className="h-[16rem] w-full bg-neutral-200" />
-      <Skeleton className="h-[16rem] w-full bg-neutral-200" />
+      <Skeleton className="h-[16rem] w-full bg-taskCard" />
+      <Skeleton className="h-[16rem] w-full bg-taskCard" />
+      <Skeleton className="h-[16rem] w-full bg-taskCard" />
+      <Skeleton className="h-[16rem] w-full bg-taskCard" />
+      <Skeleton className="h-[16rem] w-full bg-taskCard" />
     </div>
   )
 }

@@ -20,15 +20,11 @@ const AllTasksPage = async () => {
     },
   })
   return (
-    <>
-      <Topbar />
-
-      <div className="mt-4">
-        <Suspense fallback={<TaskList.Skeleton />}>
-          <TaskList allTasks={tasks} />
-        </Suspense>
-      </div>
-    </>
+    <div className="mt-4">
+      <Suspense fallback={<TaskList.Skeleton />}>
+        <TaskList allTasks={tasks} />
+      </Suspense>
+    </div>
   )
 }
 export default AllTasksPage
