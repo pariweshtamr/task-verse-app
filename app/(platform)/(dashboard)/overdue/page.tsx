@@ -28,7 +28,7 @@ const OverduePage = async () => {
     <div className="mt-4">
       {tasks?.length === 0 ? (
         <h3 className="text-txtColor text-xl">
-          Great job! You have overdue tasks.
+          Great job! You have no overdue tasks.
         </h3>
       ) : (
         <Suspense fallback={<TaskList.Skeleton />}>
