@@ -27,11 +27,9 @@ const OverduePage = async () => {
   return (
     <div className="mt-4">
       {tasks?.length === 0 ? (
-        <>
-          <h3 className="text-txtColor text-xl">
-            Great job! You have overdue tasks.
-          </h3>
-        </>
+        <h3 className="text-txtColor text-xl">
+          Great job! You have overdue tasks.
+        </h3>
       ) : (
         <Suspense fallback={<TaskList.Skeleton />}>
           <TaskList overdueTasks={tasks} />

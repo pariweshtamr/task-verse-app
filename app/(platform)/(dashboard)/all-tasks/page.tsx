@@ -20,9 +20,15 @@ const AllTasksPage = async () => {
   })
   return (
     <div className="mt-4">
-      <Suspense fallback={<TaskList.Skeleton />}>
-        <TaskList allTasks={tasks} />
-      </Suspense>
+      {tasks?.length === 0 ? (
+        <h3 className="text-txtColor text-xl">
+          You have not created any tasks!
+        </h3>
+      ) : (
+        <Suspense fallback={<TaskList.Skeleton />}>
+          <TaskList allTasks={tasks} />
+        </Suspense>
+      )}
     </div>
   )
 }

@@ -26,9 +26,7 @@ const DueSoonPage = async () => {
   return (
     <div className="mt-4">
       {tasks?.length === 0 ? (
-        <>
-          <h3 className="text-txtColor text-xl">You have no tasks due soon!</h3>
-        </>
+        <h3 className="text-txtColor text-xl">You have no tasks due soon!</h3>
       ) : (
         <Suspense fallback={<TaskList.Skeleton />}>
           <TaskList dueTasks={tasks} />

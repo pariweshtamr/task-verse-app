@@ -21,9 +21,13 @@ const CompletedPage = async () => {
   })
   return (
     <div className="mt-4">
-      <Suspense fallback={<TaskList.Skeleton />}>
-        <TaskList completedTasks={tasks} />
-      </Suspense>
+      {tasks?.length === 0 ? (
+        <h3 className="text-txtColor text-xl">You have no completed tasks!</h3>
+      ) : (
+        <Suspense fallback={<TaskList.Skeleton />}>
+          <TaskList completedTasks={tasks} />
+        </Suspense>
+      )}
     </div>
   )
 }
