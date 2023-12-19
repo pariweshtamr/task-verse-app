@@ -21,6 +21,7 @@ export const TaskList = ({
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       <AddTaskButton />
+
       {allTasks?.map((task: Task) => (
         <TaskItem key={task.id} task={task} />
       ))}
