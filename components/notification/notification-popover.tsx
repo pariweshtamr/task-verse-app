@@ -41,6 +41,9 @@ export const NotificationPopover = ({
           <Link
             href={"/due-soon"}
             className="text-green/10 rounded-full px-1.5 undeline bg-green"
+            onClick={() => {
+              closeRef.current?.click()
+            }}
           >
             Click here
           </Link>{" "}

@@ -24,7 +24,6 @@ export const Topbar = ({ dueTasks }: TopbarProps) => {
   const title = path.split("-").join(" ")
 
   const showSkeleton = !opened && dueTasks?.length! > 0 && !user?.imageUrl
-  const showBadge = !showSkeleton && dueTasks?.length! > 0
 
   const renderAvatarContent = () => {
     if (showSkeleton) {
@@ -49,7 +48,7 @@ export const Topbar = ({ dueTasks }: TopbarProps) => {
       )
     }
 
-    return null
+    return <Skeleton className="w-10 h-10 bg-taskCard rounded-full" />
   }
 
   return (
@@ -74,13 +73,18 @@ export const Topbar = ({ dueTasks }: TopbarProps) => {
         </FormPopOver>
 
         <div className="relative" onClick={() => setOpened(true)}>
-          {showBadge ? (
-            <Badge className="absolute -top-3 -right-3 z-10" variant={"custom"}>
-              {dueTasks?.length}
-            </Badge>
-          ) : (
-            <Skeleton className="absolute -top-3 -right-3 z-10 h-6 w-8 border px-2.5 py-0.5 rounded-full focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-taskCard border-transparent" />
-          )}
+          {!opened &&
+            dueTasks?.length! > 0 &&
+            (user?.imageUrl ? (
+              <Badge
+                className="absolute -top-3 -right-3 z-10"
+                variant={"custom"}
+              >
+                {dueTasks?.length}
+              </Badge>
+            ) : (
+              <Skeleton className="absolute -top-3 -right-3 z-10 h-6 w-8 border px-2.5 py-0.5 rounded-full focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-taskCard border-transparent" />
+            ))}
 
           {renderAvatarContent()}
         </div>
